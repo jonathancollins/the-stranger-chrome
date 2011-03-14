@@ -1,0 +1,25 @@
+{
+  "name": "Enhancements for The Stranger",
+  "version": "1.0",
+  "description": "Nests comment replies on The Stranger's online articles and blog posts",
+  "content_scripts": [
+    {
+      "matches": [
+        "http://www.thestranger.com/seattle/*/Content?*",
+        "http://slog.thestranger.com/*/archives/*",
+        "http://lineout.thestranger.com/*/archives/*",
+        "http://www.thestranger.com/seattle/Comments?*"
+      ],
+      "js": [
+        "js/jquery.min.js",
+        "js/nest.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16":  "img/icon16.png",
+    "48":  "img/icon48.png",
+    "128": "img/icon128.png"
+  }
+}
