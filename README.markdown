@@ -2,4 +2,4 @@ This extension improves the user experience of reading comments on The Stranger'
 
 ## Reply nesting
 
-By examining commonly-used #N and @N references, this extension seamlessly converts a long, flat list of comments into a manageable thread with nested replies.
+This extension converts the flat, numbered comments into manageable threads with nested replies, using cues like "@4" or "#7" in the comment text.
