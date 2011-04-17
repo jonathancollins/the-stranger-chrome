@@ -42,6 +42,7 @@ function nestComments()
         var nest = $(document.createElement('div'))
             .attr('id', comments[n].attr('id') + '-nest')
             .css('margin-left', '40px')
+            .css('min-width', '260px')
             .addClass('nest')
             .insertAfter(comments[n]);
 
@@ -50,7 +51,8 @@ function nestComments()
 
     //match replies in "#N" or "@N" format
     //also matches variants of "@N and M"
-    var replyRegExp = /[#@] ?([0-9]+)( ?(,|\/|and|&) ?([0-9]+))?/g;
+    var replyRegExp = /[#@] ?([0-9]+(?: ?(?:,|\/|and|&) ?[0-9]+)*)/g;
+    var splitRegExp = / ?(?:,|\/|and|&) ?/;
 
     //loop through comments in reverse order
     for (var n = max; n > 0; n--)
@@ -63,15 +65,15 @@ function nestComments()
 
         var commentBody = $(".commentBody", comments[n])
         var parents = [];
-
         var match;
 
         //collect for @N or #N references
-        while (match = replyRegExp.exec(commentBody.html()))
+        while ((match = replyRegExp.exec(commentBody.html())) != null)
         {
-            //matches are index 1 and every 3rd index after
-            for (var i = 1; match[i] != undefined; i += 3) {
-                var inReplyTo = parseInt(match[i]);
+            var matches = match[1].split(splitRegExp);
+
+            for (var i in matches) {
+                var inReplyTo = parseInt(matches[i]);
 
                 //avoid false positives and circular references
                 if (inReplyTo < n && comments[inReplyTo] != undefined)
