@@ -1,15 +1,16 @@
 {
   "name": "Enhancements for The Stranger",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Nests comment replies on The Stranger's online articles and blog posts",
   "content_scripts": [
     {
       "matches": [
-        "http://www.thestranger.com/seattle/*/Content?*",
-        "http://www.thestranger.com/seattle/SavageLove?*",
         "http://slog.thestranger.com/*/archives/*",
         "http://lineout.thestranger.com/*/archives/*",
+        "http://www.thestranger.com/*/archives/*",
         "http://www.thestranger.com/seattle/Comments?*"
+        "http://www.thestranger.com/seattle/*/Content?*",
+        "http://www.thestranger.com/seattle/SavageLove?*",
       ],
       "js": [
         "js/jquery.min.js",
