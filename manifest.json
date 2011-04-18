@@ -10,7 +10,7 @@
         "http://www.thestranger.com/*/archives/*",
         "http://www.thestranger.com/seattle/Comments?*",
         "http://www.thestranger.com/seattle/*/Content?*",
-        "http://www.thestranger.com/seattle/SavageLove?*",
+        "http://www.thestranger.com/seattle/SavageLove?*"
       ],
       "js": [
         "js/jquery.min.js",
