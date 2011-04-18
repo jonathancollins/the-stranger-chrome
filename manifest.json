@@ -8,7 +8,7 @@
         "http://slog.thestranger.com/*/archives/*",
         "http://lineout.thestranger.com/*/archives/*",
         "http://www.thestranger.com/*/archives/*",
-        "http://www.thestranger.com/seattle/Comments?*"
+        "http://www.thestranger.com/seattle/Comments?*",
         "http://www.thestranger.com/seattle/*/Content?*",
         "http://www.thestranger.com/seattle/SavageLove?*",
       ],
