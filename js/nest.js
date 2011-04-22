@@ -17,28 +17,21 @@ if (valid)
 
 function nestComments()
 {
-    //create a map of comment number to comment
     var comments = {};
+    var max = 0;
+    var nests = {};
 
     $(".comment:not(.collapsed) .commentNumber").each(function(i, e)
     {
+        //create a map of comment number to comment
         var n = parseInt(e.innerHTML);
         comments[n] = $(e).parent().parent();
-    });
     
-    //get the highest comment number
-    //for reverse iteration
-    var max = 0;
-    
-    for (n in comments) {
+        //get the highest comment number
+        //for reverse iteration
         max = Math.max(max, n);
-    }
-
-    //create a reply nest for each comment
-    var nests = {};
-
-    for (n in comments)
-    {
+        
+        //create a reply nest for each comment
         var nest = $(document.createElement('div'))
             .attr('id', comments[n].attr('id') + '-nest')
             .css('margin-left', '40px')
@@ -47,8 +40,8 @@ function nestComments()
             .insertAfter(comments[n]);
 
         nests[n] = nest;
-    };
-
+    });
+    
     //match replies in "#N" or "@N" format
     //also matches variants of "@N and M"
     var replyRegExp = /[#@] ?([0-9]+(?: ?(?:,|\/|and|&) ?[0-9]+)*)/g;
@@ -67,25 +60,24 @@ function nestComments()
         var parents = [];
         var match;
 
-        //collect for @N or #N references
+        //search for @N or #N references
         while ((match = replyRegExp.exec(commentBody.html())) != null)
         {
+            //account for multiple references in one @/#
             var matches = match[1].split(splitRegExp);
-
             for (var i in matches) {
                 var inReplyTo = parseInt(matches[i]);
 
                 //avoid false positives and circular references
                 if (inReplyTo < n && comments[inReplyTo] != undefined)
                 {
-                    //alert(n + " is in reply to " + inReplyTo);
-
                     //index by inReplyTo to avoid duplicating replies
                     parents[inReplyTo] = inReplyTo;
                 }
             }
         }
 
+        //nest the comment
         if (parents.length > 0)
         {
             for (p in parents)
@@ -126,7 +118,7 @@ function nestComments()
                 });
                 */
 
-                //instead use prototype in an onclick attribute
+                //instead use The Stranger's prototype install with an onclick attribute
                 expander.get(0).setAttribute('onclick', '$(this).up().hide();$(this).up().next().appear({duration:0.5});');
 
                 //prepend everying to the parent's reply nest
