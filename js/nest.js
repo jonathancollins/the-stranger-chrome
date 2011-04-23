@@ -129,6 +129,8 @@ function nestComments()
             }
         }
     }
+    
+    //nesting complete
     //collapse all but the first instance of a comment
     var appeared = {};
     
